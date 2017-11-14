@@ -1,0 +1,19 @@
+{
+  "name": "wos",
+  "version": "1.0.0",
+  "description": "A web OS to act as a CV",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terrygonguet/WOS.git"
+  },
+  "author": "Terry Gonguet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/terrygonguet/WOS/issues"
+  },
+  "homepage": "https://github.com/terrygonguet/WOS#readme"
+}
