@@ -3,8 +3,6 @@ var WOS = WOS || {};
   class Window {
 
     constructor(title, props = {}) {
-      Window.list.push(this);
-      
       this.width           = props.w || 400;
       this.height          = props.h || 300;
       this.x               = props.x || 100;
@@ -22,6 +20,9 @@ var WOS = WOS || {};
       this.reduced         = false;
       this.fullscreen      = false;
 
+      Window.list.push(this);
+
+      this.zindex = Window.list.length;
       this.saveState();
 
       this.windowContainer.append(
@@ -46,8 +47,8 @@ var WOS = WOS || {};
         })
         .resizable({
           handles: "se",
-          minHeight: 200,
-          minWidth: 200,
+          minHeight: 100,
+          minWidth: 150,
           resize: (e, ui) => {
             this.width = ui.size.width,
             this.height = ui.size.height
@@ -62,10 +63,11 @@ var WOS = WOS || {};
           this.disableMove();
           this.fullscreen = false;
           this.saveState();
+          this.zindex = 99;
           this.windowContainer.css({
             width: 150,
             height:this.titleBar.height() + 5,
-            left: 0,
+            left: Window.list.filter(w => w.reduced).length * 152,
             top: window.innerHeight - this.titleBar.height() - 4
           });
         }
@@ -92,6 +94,12 @@ var WOS = WOS || {};
 
       this.btnClose.click(() => {
         this.windowContainer.detach();
+        Window.list.splice(Window.list.indexOf(this), 1);
+      });
+
+      this.windowContainer.click(() => {
+        Window.list.filter(w => !w.reduced).forEach(w => (w.zindex > 0 && w.zindex--));
+        this.zindex = Window.list.length;
       });
 
       this.restoreState();
@@ -103,6 +111,14 @@ var WOS = WOS || {};
 
     set title(val) {
       this._title.text(val);
+    }
+
+    get zindex() {
+      return this.windowContainer.css("z-index");
+    }
+
+    set zindex(val) {
+      this.windowContainer.css("z-index", val);
     }
 
     appendTo(elem) {

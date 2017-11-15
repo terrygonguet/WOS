@@ -18,7 +18,7 @@ code {
 }
 
 .windowcontainer {
-
+	position: absolute !important;
 }
 
 .window {
@@ -30,10 +30,17 @@ code {
 }
 
 .titlebar {
-  border-bottom: 2px solid gray;
+  /*border-bottom: 2px solid gray;*/
   position: relative;
   height: 20px;
   flex: 0 1 auto;
+	color: #EEE;
+	background-color: #111;
+}
+
+.titlebar>code {
+	top: -2px;
+	position: relative;
 }
 
 .titlebtn {
@@ -45,17 +52,17 @@ code {
 }
 
 .titlereduce {
-  background-color: chocolate;
+  background: linear-gradient(45deg, #FAE22D, #D69327);
   right: 35px;
 }
 
 .titlefullscreen {
-  background-color: lightgreen;
+  background: linear-gradient(45deg, #5EF74A, #227517);
   right: 20px;
 }
 
 .titleclose {
-  background: red;
+  background: linear-gradient(45deg, #F54545, #962424);
   right: 5px;
 }
 
