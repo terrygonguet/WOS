@@ -11,5 +11,4 @@ $(document).ready(function () {
     w: 800, h: 600
   });
   w.appendTo("body");
-  w.zindex++;
 });

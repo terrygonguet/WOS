@@ -21,6 +21,8 @@ var WOS = WOS || {};
       this.isFullscreen    = false;
       this.source          = props.source || null;
       this.onresize        = null;
+      this.ondrag          = null;
+      this.onclose         = null;
 
       Window.list.push(this);
 
@@ -46,6 +48,7 @@ var WOS = WOS || {};
           drag: (e, ui) => {
             this.x = ui.offset.left,
             this.y = ui.offset.top
+            this.triggerDrag();
           }
         })
         .resizable({
@@ -55,10 +58,7 @@ var WOS = WOS || {};
           resize: (e, ui) => {
             this.width = ui.size.width,
             this.height = ui.size.height
-            this.onresize && this.onresize({
-              width: this.windowContent.width(),
-              height: this.windowContent.height()
-            });
+            this.triggerResize();
           }
         });
 
@@ -122,7 +122,8 @@ var WOS = WOS || {};
       </div>
       `);
       $.get(val + "/index.html", res => {
-        window.win = this;
+        window.win = Window.list.indexOf(this);
+        window.path = val +  "/";
         this.windowContent.html(res);
       });
     }
@@ -133,6 +134,18 @@ var WOS = WOS || {};
         height: this.windowContent.height()
       });
       this.windowContent.show();
+    }
+
+    triggerDrag() {
+      const offset = this.windowContent.offset();
+      this.ondrag && this.ondrag({
+        top: offset.top,
+        left: offset.left
+      });
+    }
+
+    triggerClose() {
+      this.onclose && this.onclose();
     }
 
     fullscreen() {
@@ -166,6 +179,7 @@ var WOS = WOS || {};
     close() {
       this.windowContainer.detach();
       Window.list.splice(Window.list.indexOf(this), 1);
+      this.triggerClose();
     }
 
     appendTo(elem) {
