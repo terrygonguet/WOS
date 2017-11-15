@@ -11,4 +11,9 @@ app.use(express.static("static"));
 
 io.on('connection', function (socket) {
   console.log(socket.id + " joined");
+  socket.join("chat");
+  socket.on("message", data => {
+    socket.to("chat").emit("message", data);
+    console.log(socket.id, data);
+  });
 });
