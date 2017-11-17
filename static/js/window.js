@@ -12,6 +12,7 @@ var WOS = WOS || {};
       this.windowContainer = $(`<div class="windowcontainer"></div>`);
       this.window          = $(`<div class="window"></div>`);
       this.titleBar        = $(`<div class="titlebar"></div>`);
+      this.windowhead      = $(`<div class="windowhead"></div>`);
       this.windowContent   = $(`<div class="windowcontent"></div>`).height(window.innerHeight - this.titleBar.height());
       this.btnReduce       = $(`<div class="titlebtn titlereduce"></div>`);
       this.btnFullscreen   = $(`<div class="titlebtn titlefullscreen"></div>`);
@@ -23,6 +24,7 @@ var WOS = WOS || {};
       this.onresize        = null;
       this.ondrag          = null;
       this.onclose         = null;
+      this.onloadcomplete  = props.onloadcomplete || null;
 
       Window.list.push(this);
 
@@ -37,6 +39,7 @@ var WOS = WOS || {};
             this.btnFullscreen,
             this.btnClose
           ),
+          this.windowhead,
           this.windowContent
         )
       );
@@ -121,10 +124,11 @@ var WOS = WOS || {};
         </div>
       </div>
       `);
-      $.get(val + "/index.html", res => {
+      $.get(val, res => {
         window.win = Window.list.indexOf(this);
         window.path = val +  "/";
         this.windowContent.html(res);
+        this.onloadcomplete && this.onloadcomplete(this);
       });
     }
 
