@@ -12,10 +12,12 @@ var WOS = WOS || {};
           title: res.title,
           source: path + res.html
         };
-        res.window.width && (props.w = res.window.width);
-        res.window.height && (props.h = res.window.height);
-        res.window.x && (props.x = res.window.x);
-        res.window.y && (props.y = res.window.y);
+        if (res.window) {
+          res.window.width && (props.w = res.window.width);
+          res.window.height && (props.h = res.window.height);
+          res.window.x && (props.x = res.window.x);
+          res.window.y && (props.y = res.window.y);
+        }
         props.onloadcomplete = (win) => {
           for (var css of res.css) {
             win.windowhead.append($(`<link href='${path + css}' rel='stylesheet'>`));
@@ -28,13 +30,13 @@ var WOS = WOS || {};
         }
 
         this.window = new WOS.Window(props);
-        res.window.fullscreen && this.window.fullscreen();
-        res.window.reduce && this.window.reduce();
+        res.window && res.window.fullscreen && this.window.fullscreen();
+        res.window && res.window.reduce && this.window.reduce();
         this.window.appendTo("body");
 
       }).fail(e => {
         console.log(e);
-        throw new Exception("No app there");
+        throw "No app there";
       });
     }
 

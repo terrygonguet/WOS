@@ -1,0 +1,14 @@
+{
+  "html": "index.html",
+  "title": "Command Line",
+  "css": [
+    "cmd.css"
+  ],
+  "js": [
+    "cmd.js"
+  ],
+  "window": {
+    "width": 1000,
+    "height": 500
+  }
+}

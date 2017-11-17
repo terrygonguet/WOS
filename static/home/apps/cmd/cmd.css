@@ -1,0 +1,27 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background: #111;
+}
+
+.output {
+ overflow: auto;
+ display: flex;
+ flex-direction: column-reverse;
+ width: 100%;
+}
+
+.output>p {
+  margin: 0;
+}
+
+.input {
+  position: absolute;
+  bottom: 0;
+  padding: 1%;
+  width: 100%;
+}
+
+#cli {
+  width: 99%;
+}

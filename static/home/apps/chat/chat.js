@@ -1,15 +1,20 @@
 (function () {
   const handle = WOS.Window.list[win];
   handle.onresize = size => {
-    $(".output").css("max-height", size.height - $(".input").height());
+    $(".output", handle.windowContent).css("max-height", size.height - $(".input", handle.windowContent).height());
   };
+  $(".output", handle.windowContent).css("max-height", handle.windowContent.height() - $(".input", handle.windowContent).height());
+
+  handle.windowContent.click(e => {
+    $("#cli", handle.windowContent).focus();
+  });
 
   // type : muted, primary, success, info, warning, and danger
   function addLine(pseudo, text, type="muted") {
     $(`<div class="row"></div>`)
       .append($(`<div class="col-xs-2 text-${type}" style="text-align:right"></div>`).text(pseudo))
       .append($(`<div class="col-xs-10 text-${type}" style="overflow:hidden"></div>`).text(text))
-      .prependTo(".output");
+      .prependTo($(".output", handle.windowContent));
   }
 
   var pseudo = localStorage.getItem("pseudo");

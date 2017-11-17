@@ -125,8 +125,6 @@ var WOS = WOS || {};
       </div>
       `);
       $.get(val, res => {
-        window.win = Window.list.indexOf(this);
-        window.path = val +  "/";
         this.windowContent.html(res);
         this.onloadcomplete && this.onloadcomplete(this);
       });
