@@ -13,7 +13,7 @@
   handle.onresize = size => {
     $(".output", handle.windowContent).css("max-height", size.height - $(".input", handle.windowContent).height());
   };
-  $(".output", handle.windowContent).css("max-height", handle.windowContent.height() - $(".input", handle.windowContent).height());
+  $(".output", handle.windowContent).css("max-height", handle.windowContent.height() - $(".input", handle.windowContent).height() - 12);
 
   handle.windowContent.click(e => {
     $("#cli", handle.windowContent).focus();
@@ -34,7 +34,10 @@
 
       addLine(curpath() + " > " + text);
       var words = text.split(" ");
-      commands[words[0]] && commands[words[0]](words.slice(1));
+      if (commands[words[0]])
+        commands[words[0]](words.slice(1));
+      else
+        addLine("No command with the name: " + words[0], "danger");
     }
   });
 
@@ -44,25 +47,51 @@
     return currentdir.join("/");
   }
   function addtopath(dir) {
-    currentdir.push(dir);
+    currentdir = currentdir.concat(dir.split("/"));
+    $("#path", handle.windowContent).text(curpath());
+  }
+  function upone() {
+    currentdir.pop();
     $("#path", handle.windowContent).text(curpath());
   }
 
   const commands = {
     ls: e => {
       $.getJSON("list/" + encodeURIComponent(curpath()), function (res) {
+        addLine(".", "success");
+        addLine("..", "success");
         for (var f in res) {
           addLine(f, res[f] === "file" ? "primary" : "success");
         }
       });
     },
     cd: e => {
-      $.getJSON("list/" + encodeURIComponent(curpath() + "/" + e[0]), function (res) {
-        addtopath(e[0]);
+      var path;
+      if (e[0] === "..") {
+        upone();
+        path = encodeURIComponent(curpath());
+      } else {
+        path = encodeURIComponent(curpath() + "/" + e[0]);
+      }
+      $.getJSON("list/" + path, function (res) {
+        if (e[0] !== "." && e[0] !== "..")
+          addtopath(e[0]);
       }).fail(function () {
         addLine("Not a valid path", "danger");
       });
-
+    },
+    open: e => {
+      if (e[0]) {
+        new WOS.App(curpath() + "/" + e[0] + "/");
+      } else {
+        new WOS.App(curpath() + "/");
+      }
+    },
+    help: e => {
+      addLine("cd <path>     : change directory.", "info");
+      addLine("ls            : list directory contents.", "info");
+      addLine("help            : displays help", "info");
+      addLine("open [<path>] : opens an app in a window. An app is a folder containing an app.json file. If no path is provided the path is the current directory.", "info");
     }
   }
 })();
