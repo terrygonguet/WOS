@@ -101,3 +101,14 @@ pre .close {
 		color: #8DA6CE;
 	}
 }
+
+.hint {
+	margin: auto;
+width: 50%;
+display: block;
+text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}

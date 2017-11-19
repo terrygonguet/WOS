@@ -3,5 +3,9 @@ var WOS = WOS || {};
 WOS.io = io(location.origin);
 
 $(document).ready(function () {
-  var app = new WOS.App("home/apps/cmd/");
+  $(document).keyup(function (e) {
+    if (e.key === "t" && e.altKey && e.ctrlKey) {
+      var app = new WOS.App("home/apps/cmd/");
+    }
+  });
 });

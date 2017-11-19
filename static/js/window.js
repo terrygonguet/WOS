@@ -130,6 +130,14 @@ var WOS = WOS || {};
       });
     }
 
+    set left(val) {
+      this.windowContainer.css("left", val);
+    }
+
+    set top(val) {
+      this.windowContainer.css("top", val);
+    }
+
     triggerResize() {
       this.onresize && this.onresize({
         width: this.windowContent.width(),
@@ -170,7 +178,7 @@ var WOS = WOS || {};
       this.windowContainer.css({
         width: 150,
         height:this.titleBar.height() + 5,
-        left: Window.list.filter(w => w.reduced).length * 152,
+        left: Window.list.filter(w => w.isReduced).length * 152,
         top: window.innerHeight - this.titleBar.height() - 4
       });
       this.isReduced = true;

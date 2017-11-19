@@ -5,11 +5,14 @@
   const history = [];
   var hoffset = 0;
 
+  handle.left = innerWidth / 2 - handle.width / 2;
+  handle.top = innerHeight / 2 - handle.height / 2;
+
   $.getJSON("list", function (res) {
     currentdir = Object.keys(res);
     $("#path", handle.windowContent).text(curpath());
     addLine("Type 'help' for commands", "info");
-    $("#cli", handle.windowContent).removeAttr("disabled");
+    $("#cli", handle.windowContent).removeAttr("disabled").focus();
   });
 
   handle.onresize = size => {
@@ -44,8 +47,6 @@
         addLine("No command with the name: " + words[0], "danger");
     }
   });
-
-  $("#cli").focus();
 
   function curpath() {
     return currentdir.join("/");
