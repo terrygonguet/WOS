@@ -74,6 +74,7 @@ var WOS = WOS || {};
           this.saveState();
           this.reduce();
         }
+        Window.list.filter(w => w.isReduced).forEach((w, i) => w.left = i * 152);
       });
       this.btnFullscreen.click(() => {
         if (this.isFullscreen) {
@@ -178,7 +179,6 @@ var WOS = WOS || {};
       this.windowContainer.css({
         width: 150,
         height:this.titleBar.height() + 5,
-        left: Window.list.filter(w => w.isReduced).length * 152,
         top: window.innerHeight - this.titleBar.height() - 4
       });
       this.isReduced = true;
