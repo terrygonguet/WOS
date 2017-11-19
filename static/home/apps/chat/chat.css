@@ -1,27 +1,27 @@
-.wrapper {
+.wrapper-chat {
   width: 100%;
   height: 100%;
   background: #111;
 }
 
-.output {
+.wrapper-chat .output {
  overflow: auto;
  display: flex;
  flex-direction: column-reverse;
  width: 100%;
 }
 
-.output>p {
+.wrapper-chat .output>p {
   margin: 0;
 }
 
-.input {
+.wrapper-chat .input {
   position: absolute;
   bottom: 0;
   padding: 1%;
   width: 100%;
 }
 
-#cli {
+.wrapper-chat #cli {
   width: 99%;
 }

@@ -1,0 +1,11 @@
+{
+  "title": "Curriculum Vitae",
+  "html": "index.html",
+  "css": [
+    "cv.css"
+  ],
+  "js": [],
+  "window": {
+    "fullscreen": true
+  }
+}

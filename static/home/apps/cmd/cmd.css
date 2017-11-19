@@ -1,27 +1,27 @@
-.wrapper {
+.wrapper-cmd {
   width: 100%;
   height: 100%;
   background: #111;
 }
 
-.output {
+.wrapper-cmd .output {
  overflow: auto;
  display: flex;
  flex-direction: column-reverse;
  width: 100%;
 }
 
-.output>p {
+.wrapper-cmd .output>p {
   margin: 0;
 }
 
-.input {
+.wrapper-cmd .input {
   position: absolute;
   bottom: 0;
   padding: 1%;
   width: 100%;
 }
 
-#cli {
+.wrapper-cmd #cli {
   width: 99%;
 }
