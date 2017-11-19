@@ -81,3 +81,23 @@ code {
   flex: 1 1 auto;
 	overflow: hidden;
 }
+
+.code {
+	width:100%;
+	height:100%;
+	background-color: #000;
+	border: none;
+	border-radius: 0;
+}
+
+pre .close {
+	all: initial;
+	font-size: 14px;
+	color: #8DA6CE;
+
+	:hover, :focus {
+		all: initial;
+		font-size: 14px;
+		color: #8DA6CE;
+	}
+}

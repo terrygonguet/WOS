@@ -2,6 +2,8 @@
   var id = win + "";
   const handle = WOS.Window.list[id];
   var currentdir = [];
+  const history = [];
+  var hoffset = 0;
 
   $.getJSON("list", function (res) {
     currentdir = Object.keys(res);
@@ -31,6 +33,8 @@
       var text = $(this).val();
       if (!text) return;
       $(this).val("");
+      history.push(text);
+      hoffset = 0;
 
       addLine(curpath() + " > " + text);
       var words = text.split(" ");
@@ -81,17 +85,45 @@
       });
     },
     open: e => {
-      if (e[0]) {
-        new WOS.App(curpath() + "/" + e[0] + "/");
-      } else {
-        new WOS.App(curpath() + "/");
+      try {
+        if (e[0]) {
+          new WOS.App(curpath() + "/" + e[0] + "/");
+        } else {
+          new WOS.App(curpath() + "/");
+        }
+      } catch (err) {
+        addLine(err, "danger");
       }
+    },
+    code: e => {
+      $.get(curpath() + "/" + e[0], function (res) {
+        var win = new WOS.Window({
+          x: 50, y: 50, w: 500, h: 500,
+          title: curpath() + "/" + e[0]
+        });
+
+        var filetype = "generic";
+        e[0].includes(".css") && (filetype = "css");
+        e[0].includes(".js") && (filetype = "javascript");
+        e[0].includes(".html") && (filetype = "html");
+
+        var content = $(`<pre class="code"></pre>`)
+          .append($(`<code data-language="${filetype}"><code>`)
+            .text(res));
+        win.windowContent.append(content);
+        win.appendTo("body");
+        Rainbow.color(content[0]);
+
+      }).fail(function (err) {
+        addLine("Cannot load " + curpath() + "/" + e[0], "danger");
+      });
     },
     help: e => {
       addLine("cd <path>     : change directory.", "info");
       addLine("ls            : list directory contents.", "info");
-      addLine("help            : displays help", "info");
+      addLine("help          : displays help", "info");
       addLine("open [<path>] : opens an app in a window. An app is a folder containing an app.json file. If no path is provided the path is the current directory.", "info");
+      addLine("code <path> : opens a file in a new window to see the contents. Files are read only.", "info");
     }
   }
 })();
