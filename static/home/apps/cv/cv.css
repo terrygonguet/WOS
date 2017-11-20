@@ -28,6 +28,13 @@
   color: #EEE;
 }
 
+.wrapper-cv #blinky {
+  font-weight: bold;
+  position: relative;
+  left: 0;
+  z-index: 0;
+}
+
 .wrapper-cv h3 {
   background: rgba(16,16,16,0.7);
   border: 1px solid rgba(239,239,239,0.3);
@@ -47,14 +54,16 @@
   color: #F62217;
 }
 
+.wrapper-cv #hidetext {
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  opacity: 0.1;
+  color: #EEE;
+}
+
 .wrapper-cv #categories {
   height: 100%;
   z-index: 2;
   background: #EEE;
-}
-
-.wrapper-cv #blinky {
-  font-weight: bold;
-  position: absolute;
-  z-index: 0;
 }
