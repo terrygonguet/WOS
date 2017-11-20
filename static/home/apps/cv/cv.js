@@ -11,4 +11,9 @@ $(document).ready(function () {
     $("#details").fadeToggle();
     $(this).toggleClass("fa-eye fa-eye-slash");
   });
+
+  $(".nav>li").click(function () {
+    $(".nav>li").removeClass("active");
+    $(this).addClass("active");
+  });
 });
