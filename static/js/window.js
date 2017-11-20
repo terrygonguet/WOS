@@ -21,6 +21,7 @@ var WOS = WOS || {};
       this.isReduced       = false;
       this.isFullscreen    = false;
       this.path            = props.path;
+      this.iframe          = null;
       this.onresize        = null;
       this.ondrag          = null;
       this.onclose         = null;
@@ -59,6 +60,12 @@ var WOS = WOS || {};
             this.x = ui.offset.left,
             this.y = ui.offset.top
             this.triggerDrag();
+          },
+          start: (e, ui) => {
+            this.iframe && this.iframe.attr("style", "pointer-events:none;");
+          },
+          stop: (e, ui) => {
+            this.iframe && this.iframe.removeAttr("style");
           }
         })
         .resizable({
@@ -69,6 +76,12 @@ var WOS = WOS || {};
             this.width = ui.size.width,
             this.height = ui.size.height
             this.triggerResize();
+          },
+          start: (e, ui) => {
+            this.iframe && this.iframe.attr("style", "pointer-events:none;");
+          },
+          stop: (e, ui) => {
+            this.iframe && this.iframe.removeAttr("style");
           }
         });
 
@@ -147,11 +160,11 @@ var WOS = WOS || {};
     }
 
     setiframe(val) {
-      var iframe = $(`<iframe src="${this.path}"></iframe>`);
-      this.windowContent.html(iframe);
-      iframe.ready(e => {
-        iframe[0].contentWindow.win = this;
-        iframe[0].contentWindow.outerWindow = window;
+      this.iframe = $(`<iframe src="${this.path}"></iframe>`);
+      this.windowContent.html(this.iframe);
+      this.iframe.ready(e => {
+        this.iframe[0].contentWindow.win = this;
+        this.iframe[0].contentWindow.outerWindow = window;
       });
     }
 
