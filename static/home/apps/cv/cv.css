@@ -1,40 +1,59 @@
-body {
+/*body {
   background: #EEE;
-}
+}*/
 
 .wrapper-cv {
   width: 100%;
   height: 100%;
   background: #EEE;
+  overflow: auto;
 }
 
-#hero {
+.wrapper-cv #hero {
   background: #111 url('hero.png') no-repeat fixed center;
   background-size: contain;
+  font-family: 'Monaco', 'Menlo', courier, monospace;
   height: 100%;
-  position: relative;
+  width: 100%;
+  margin-bottom: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
-#categories {
+.wrapper-cv #name {
+  width: 50%;
+  text-align: center;
+  color: #EEE;
+}
+
+.wrapper-cv h3 {
+  background: rgba(16,16,16,0.7);
+  border: 1px solid rgba(239,239,239,0.3);
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  color: #DDD;
+}
+
+.wrapper-cv a {
+  text-decoration: none;
+  color: #E55B3C;
+}
+
+.wrapper-cv a:hover {
+  text-decoration: none;
+  color: #F62217;
+}
+
+.wrapper-cv #categories {
   height: 100%;
   z-index: 2;
   background: #EEE;
 }
 
-#name {
-  width: 50%;
-  margin: auto;
-  text-align: center;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-  font-family: Monospace;
-  color: #EEE;
-  z-index: 0;
-}
-
-#blinky {
+.wrapper-cv #blinky {
   font-weight: bold;
   position: absolute;
   z-index: 0;
