@@ -31,23 +31,3 @@ app.get("/list/:path", function (req, res) {
 app.get("/list", function (req, res) {
   res.json({ home: "dir" });
 });
-
-// app.get("/files", function (req, res) {
-//   var data = {
-//     home: getDirContent("static/home")
-//   };
-//   res.json(data);
-// });
-//
-// function getDirContent(dirname) {
-//   var folder = {};
-//   var files = fs.readdirSync(dirname);
-//   for (var file of files) {
-//     try {
-//       folder[file] = getDirContent(dirname + "/" + file);
-//     } catch (e) {
-//       folder[file] = "file";
-//     }
-//   }
-//   return folder;
-// }

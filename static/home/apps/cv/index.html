@@ -1,8 +1,19 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link rel="stylesheet" href="cv.css">
-<div class="wrapper-cv container">
-  <div class="row">
-    <div class="col-xs-6 col-md-8 test" style="background:#555;"></div>
-    <div class="col-xs-6 col-md-4 test" style="background:#999;"></div>
+<div class="wrapper-cv">
+  <div class="jumbotron" id="hero">
+    <h1 id="name">terry@GONGUET:~$<span id="blinky">&nbsp;_</span></h1>
   </div>
+  <div class="container-fluid" id="categories">
+    
+  </div>
+
 </div>
+<script>
+$(document).ready(function () {
+  var blinky = setInterval(function () {
+    $("#blinky").toggle();
+  }, 750);
+});
+</script>

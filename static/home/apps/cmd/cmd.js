@@ -2,7 +2,7 @@
   var id = win + "";
   const handle = WOS.Window.list[id];
   var currentdir = [];
-  const history = [];
+  var history = "";
   var hoffset = 0;
 
   handle.left = innerWidth / 2 - handle.width / 2;
@@ -36,7 +36,6 @@
       var text = $(this).val();
       if (!text) return;
       $(this).val("");
-      history.push(text);
       hoffset = 0;
 
       addLine(curpath() + " > " + text);
@@ -45,6 +44,11 @@
         commands[words[0]](words.slice(1));
       else
         addLine("No command with the name: " + words[0], "danger");
+      history = text;
+    } else if (e.key === "ArrowUp") {
+      $("#cli", handle.windowContent).val(history);
+    } else if (e.key === "ArrowDown") {
+      $("#cli", handle.windowContent).val("");
     }
   });
 
@@ -118,6 +122,9 @@
       }).fail(function (err) {
         addLine("Cannot load " + curpath() + "/" + e[0], "danger");
       });
+    },
+    "!!": e => {
+      $("#cli", handle.windowContent).val(history);
     },
     help: e => {
       addLine("cd <path>     : change directory.", "info");

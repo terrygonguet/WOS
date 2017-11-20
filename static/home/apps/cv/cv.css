@@ -1,9 +1,41 @@
+body {
+  background: #EEE;
+}
+
 .wrapper-cv {
   width: 100%;
   height: 100%;
   background: #EEE;
 }
 
-.wrapper-cv .test {
-  height: 20px;
+#hero {
+  background: #111 url('hero.png') no-repeat fixed center;
+  background-size: contain;
+  height: 100%;
+  position: relative;
+}
+
+#categories {
+  height: 100%;
+  z-index: 2;
+  background: #EEE;
+}
+
+#name {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  font-family: Monospace;
+  color: #EEE;
+  z-index: 0;
+}
+
+#blinky {
+  font-weight: bold;
+  position: absolute;
+  z-index: 0;
 }
