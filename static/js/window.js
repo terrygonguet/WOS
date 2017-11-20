@@ -20,11 +20,18 @@ var WOS = WOS || {};
       this.previousState   = {};
       this.isReduced       = false;
       this.isFullscreen    = false;
-      this.source          = props.source || null;
+      this.path            = props.path;
       this.onresize        = null;
       this.ondrag          = null;
       this.onclose         = null;
+      this.source          = null;
       this.onloadcomplete  = props.onloadcomplete || null;
+
+      if (props.iframe) {
+        this.setiframe();
+      } else {
+        this.source = props.source;
+      }
 
       Window.list.push(this);
 
@@ -137,6 +144,15 @@ var WOS = WOS || {};
 
     set top(val) {
       this.windowContainer.css("top", val);
+    }
+
+    setiframe(val) {
+      var iframe = $(`<iframe src="${this.path}"></iframe>`);
+      this.windowContent.html(iframe);
+      iframe.ready(e => {
+        iframe[0].contentWindow.win = this;
+        iframe[0].contentWindow.outerWindow = window;
+      });
     }
 
     triggerResize() {

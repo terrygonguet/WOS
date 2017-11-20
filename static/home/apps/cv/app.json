@@ -1,10 +1,6 @@
 {
   "title": "Curriculum Vitae",
-  "html": "index.html",
-  "css": [
-    "cv.css"
-  ],
-  "js": [],
+  "iframe": true,
   "window": {
     "fullscreen": true
   }

@@ -10,7 +10,8 @@ var WOS = WOS || {};
 
         var props = {
           title: res.title,
-          source: path + res.html
+          source: path + res.html,
+          path, iframe: res.iframe
         };
         if (res.window) {
           res.window.width && (props.w = res.window.width);
@@ -18,7 +19,7 @@ var WOS = WOS || {};
           res.window.x && (props.x = res.window.x);
           res.window.y && (props.y = res.window.y);
         }
-        props.onloadcomplete = (win) => {
+        !res.iframe && (props.onloadcomplete = (win) => {
           for (var css of res.css) {
             win.windowhead.append($(`<link href='${path + css}' rel='stylesheet'>`));
           }
@@ -27,7 +28,7 @@ var WOS = WOS || {};
             window.path = path;
             $.getScript(path + js);
           }
-        }
+        });
 
         this.window = new WOS.Window(props);
         res.window && res.window.fullscreen && this.window.fullscreen();
