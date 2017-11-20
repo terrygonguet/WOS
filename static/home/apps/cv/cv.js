@@ -8,7 +8,7 @@ $(document).ready(function () {
   $("#age").text(parseInt((Date.now() - birth) / 31557600000));
 
   $("#hidetext").click(function () {
-    $("#name, #hero>h3").fadeToggle();
+    $("#details").fadeToggle();
     $(this).toggleClass("fa-eye fa-eye-slash");
   });
 });

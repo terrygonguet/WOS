@@ -16,23 +16,32 @@
   height: 100%;
   width: 100%;
   margin-bottom: 0;
+  z-index: 0;
+}
+
+.wrapper-cv #details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 }
 
 .wrapper-cv #name {
-  width: 50%;
   text-align: center;
   color: #EEE;
+  pointer-events: auto;
 }
 
 .wrapper-cv #blinky {
   font-weight: bold;
   position: relative;
   left: 0;
-  z-index: 0;
+  pointer-events: auto;
 }
 
 .wrapper-cv h3 {
@@ -42,6 +51,7 @@
   padding: 10px;
   text-align: center;
   color: #DDD;
+  pointer-events: auto;
 }
 
 .wrapper-cv a {
@@ -60,10 +70,12 @@
   right: 25px;
   opacity: 0.1;
   color: #EEE;
+  z-index: 0;
 }
 
 .wrapper-cv #categories {
   height: 100%;
   z-index: 2;
   background: #EEE;
+  position: relative;
 }
