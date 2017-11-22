@@ -1,12 +1,17 @@
-/*body {
+body, html {
   background: #EEE;
-}*/
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
 
 .wrapper-cv {
   width: 100%;
   height: 100%;
   background: #EEE;
   overflow: auto;
+  font-family: Montserrat;
 }
 
 .wrapper-cv #hero {
@@ -74,8 +79,18 @@
 }
 
 .wrapper-cv #categories {
-  height: 100%;
+  min-height: 100%;
   z-index: 2;
   background: #EEE;
   position: relative;
+  font-size: 1.5em;
+}
+
+#btnMore1, #btnMore2 {
+  background-color: #E07C65;
+  color: #EEE;
+}
+
+#btnMore1:hover, #btnMore2:hover {
+  background-color: #E55B3C;
 }

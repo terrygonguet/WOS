@@ -15,5 +15,17 @@ $(document).ready(function () {
   $(".nav>li").click(function () {
     $(".nav>li").removeClass("active");
     $(this).addClass("active");
+    $(".category").hide();
+    $("#category-" + $(this).attr("data-category")).show();
+  });
+
+  $("#btnMore1").click(function () {
+    $(this).hide();
+    $("#learnmore1").fadeIn();
+  });
+
+  $("#btnMore2").click(function () {
+    $(this).hide();
+    $("#learnmore2").fadeIn();
   });
 });

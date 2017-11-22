@@ -1,4 +1,7 @@
-<hea>
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="cv.css">
@@ -11,25 +14,100 @@
         <h1 id="name">terry@GONGUET:~$<span id="blinky" title="You can't type here it's only A E S T H E T I C">&nbsp;_</span></h1>
         <h3>
           <a href="mailto:terry@gonguet.com" target="_blank" title="Feels like I'm repeating myself"><i class="fa fa-envelope"></i> terry@gonguet.com</a><br/>
-          <a href="tel:+353892083784" target="_blank"><i class="fa fa-mobile" style="font-size:1.2em"></i> +353 89 208 37 84</a><br/>
           <a href="https://github.com/terrygonguet" target="_blank" title="Forgive the profile picture"><i class="fa fa-github"></i> Github</a><br/>
-          <span id="age"> - </span> years old, Male<br/>
           <span title="Surprised ?">Developper</span><br/>
         </h3>
       </div>
       <i id="hidetext" class="fa fa-eye fa-2x" title="Made the background meself!"></i>
     </div>
 
-    <!-- <div id="padding"></div> -->
     <div id="categories">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Qualifications</a></li>
-        <li><a href="#">Degrees</a></li>
-        <li><a href="#">Experience</a></li>
+        <li class="active" data-category="home"><a href="#">Home</a></li>
+        <li title="I swear I can do things" data-category="skills"><a href="#">Skills</a></li>
+        <li data-category="education"><a href="#">Degrees</a></li>
+        <li data-category="experience"><a href="#">Experience</a></li>
       </ul>
+
+      <div id="category-home" class="container-fluid category">
+        <div class="row">
+          <div class="col-xs-12 well well-sm text-center">Who I am</div>
+        </div>
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <p title="is it me you're looking fooooooooor">Hello !</p>
+            <p>I am a young<sup><a href="https://www.youtube.com/watch?v=C25qzDhGLx8" target="_blank" title="Aren't we all ?">[citation needed]</a></sup> developper passionate about making video games and programming in general.
+            I was born in France but now live in Ireland for my studies. I started to learn programming at 11 and never stopped making games since (even though most of them are left unfinished).
+            I started with C and compiled languages but now I almost exclusively use web based technologies like NodeJS and Canvas because let's face it everything should be on the web by now<sup title="Some projects might be misguided..."><a href="https://www.os-js.org/" target="_blank">*</a></sup>.</p>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button class="btn" id="btnMore1" title="Suit yourself">Learn more about me</button>
+          </div>
+        </div>
+        <div id="learnmore1" hidden>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <p>I am convinced that most games nowadays can and should be done as websites and more and more will be possible with new technologies like WebAssembly and Vulkan.</p>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <button class="btn" id="btnMore2" title="Are you sure you're feeling alright ?">Still want to learn more ?</button>
+            </div>
+          </div>
+          <div id="learnmore2" hidden>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-4">
+                <p>What I like</p>
+                <div class="list-group">
+                  <a href="#" class="list-group-item">First item</a>
+                  <a href="#" class="list-group-item">Second item</a>
+                  <a href="#" class="list-group-item">Third item</a>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <p>What I don't like</p>
+                <div class="list-group">
+                  <a href="#" class="list-group-item">First item</a>
+                  <a href="#" class="list-group-item">Second item</a>
+                  <a href="#" class="list-group-item">Third item</a>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="category-skills" class="container-fluid category" hidden>
+        <div class="row">
+          <div class="col-xs-12 well well-sm text-center">What I can do</div>
+        </div>
+      </div>
+
+      <div id="category-education" class="container-fluid category" hidden>
+        <div class="row">
+          <div class="col-xs-12 well well-sm text-center">What I learned</div>
+        </div>
+      </div>
+
+      <div id="category-experience" class="container-fluid category" hidden>
+        <div class="row">
+          <div class="col-xs-12 well well-sm text-center">What I did</div>
+        </div>
+      </div>
+
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="cv.js"></script>
 </body>
+</html>
