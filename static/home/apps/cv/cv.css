@@ -49,7 +49,7 @@ body, html {
   pointer-events: auto;
 }
 
-.wrapper-cv h3 {
+#links {
   background: rgba(16,16,16,0.7);
   border: 1px solid rgba(239,239,239,0.3);
   border-radius: 5px;
@@ -89,8 +89,32 @@ body, html {
 #btnMore1, #btnMore2 {
   background-color: #E07C65;
   color: #EEE;
+  font-size: 1em;
 }
 
 #btnMore1:hover, #btnMore2:hover {
   background-color: #E55B3C;
+}
+
+#learnmore1, #learnmore2 {
+  padding: 2% 0 0 0;
+}
+
+.progress {
+  height: 30px;
+  border-radius: 0;
+}
+
+.progress-bar {
+  background-color: #E07C65;
+  font-size: 1em;
+  text-align: start;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding-inline-start: 5px;
+}
+
+.technologies ul li {
+  list-style-type: none;
 }
