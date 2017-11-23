@@ -118,3 +118,15 @@ body, html {
 .technologies ul li {
   list-style-type: none;
 }
+
+.panel-title {
+  font-size: 1em;
+}
+
+.panel-title span {
+  float: right;
+}
+
+.panel-body {
+  background: #F5F5F5;
+}
