@@ -16,6 +16,9 @@ body, html {
 
 .wrapper-cv #hero {
   background: #111 url('hero.png') no-repeat fixed center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
   background-size: contain;
   font-family: 'Monaco', 'Menlo', courier, monospace;
   height: 100%;
@@ -90,6 +93,8 @@ body, html {
   background-color: #E07C65;
   color: #EEE;
   font-size: 1em;
+  position: absolute;
+  transform: translateX(-50%);
 }
 
 #btnMore1:hover, #btnMore2:hover {
@@ -129,4 +134,9 @@ body, html {
 
 .panel-body {
   background: #F5F5F5;
+  text-align: justify;
+}
+
+.list-group-item span {
+  float: right;
 }

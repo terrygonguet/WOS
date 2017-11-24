@@ -20,12 +20,12 @@ $(document).ready(function () {
   });
 
   $("#btnMore1").click(function () {
-    $(this).hide();
+    $(this).fadeOut();
     $("#learnmore1").fadeIn();
   });
 
   $("#btnMore2").click(function () {
-    $(this).hide();
+    $(this).fadeOut();
     $("#learnmore2").fadeIn();
   });
 });
