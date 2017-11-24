@@ -1,25 +1,23 @@
 body, html {
-  background: #EEE;
   height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
-}
-
-.wrapper-cv {
-  width: 100%;
-  height: 100%;
-  background: #EEE;
-  overflow: auto;
-  font-family: Montserrat;
-}
-
-.wrapper-cv #hero {
   background: #111 url('hero.png') no-repeat fixed center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
+}
+
+.wrapper-cv {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  font-family: Montserrat;
+}
+
+.wrapper-cv #hero {
   font-family: 'Monaco', 'Menlo', courier, monospace;
   height: 100%;
   width: 100%;
@@ -87,6 +85,10 @@ body, html {
   background: #EEE;
   position: relative;
   font-size: 1.5em;
+}
+
+.jumbotron {
+  background: none;
 }
 
 #btnMore1, #btnMore2 {
