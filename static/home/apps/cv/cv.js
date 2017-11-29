@@ -13,10 +13,15 @@ $(document).ready(function () {
   });
 
   $(".nav>li").click(function () {
-    $(".nav>li").removeClass("active");
-    $(this).addClass("active");
-    $(".category").hide();
-    $("#category-" + $(this).attr("data-category")).show();
+    if (!$(this).hasClass("active")) {
+      if($(this).attr("data-category") === "home") {
+        changeLikes();
+      }
+      $(".nav>li").removeClass("active");
+      $(this).addClass("active");
+      $(".category").hide();
+      $("#category-" + $(this).attr("data-category")).show();
+    }
   });
 
   $("#btnMore1").click(function () {
@@ -28,4 +33,33 @@ $(document).ready(function () {
     $(this).fadeOut();
     $("#learnmore2").fadeIn();
   });
+
+  var likes = {};
+  $.getJSON("like.json", function (res) {
+    likes = res;
+    changeLikes();
+  });
+
+  function changeLikes() {
+    $("#learnmore2 .list-group-item").detach();
+    for (var list in likes) {
+      var alreadyShown = [];
+      for (var i = 0; i < 5; i++) {
+
+        var item = null;
+        do {
+          item = likes[list][Math.floor(Math.random() * likes[list].length)];
+        } while (alreadyShown.indexOf(item) !== -1);
+        alreadyShown.push(item);
+
+        var a = $("<a>" + item.name + "</a>");
+        a.attr("href", item.href ? item.href : "#");
+        a.addClass("list-group-item");
+        item.href && a.attr("target", "_blank");
+        item.title && a.attr("title", item.title);
+        a.appendTo("#" + list);
+      }
+    }
+    $("#like").append("<a href='https://vid.me/Mnu8k' target='_blank' class='list-group-item' title='No secret there' style='display:none;'>Hiding things</a>");
+  }
 });
