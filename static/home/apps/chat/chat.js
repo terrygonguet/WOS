@@ -12,7 +12,7 @@
   // type : muted, primary, success, info, warning, and danger
   function addLine(pseudo, text, type="muted") {
     $(`<div class="row"></div>`)
-      .append($(`<div class="col-xs-2 text-${type}" style="text-align:right"></div>`).text(pseudo))
+      .append($(`<div class="col-xs-2 text-${type}"></div>`).text(pseudo))
       .append($(`<div class="col-xs-10 text-${type}" style="overflow:hidden"></div>`).text(text))
       .prependTo($(".output", handle.windowContent));
   }
@@ -26,8 +26,8 @@
       addLine("Info", `Your nickname is now "${pseudo}".`, "info");
     },
     summon: (e) => {
-      WOS.io.emit("summon", e.join(" "), () => {
-        addLine("Info", "The master of this domain has been summoned.", "warning");
+      WOS.io.emit("summon", e.join(" "), (data) => {
+        addLine("Info", data, "warning");
       });
     },
     count: () => {

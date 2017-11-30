@@ -12,6 +12,7 @@ server.listen(process.env.PORT || 80, function () {
 app.use(express.static("static"));
 
 const sockets = [];
+var mailTimeout = false;
 io.on('connection', function (socket) {
   sockets.push(socket);
   console.log(socket.id + " joined");
@@ -31,6 +32,16 @@ io.on('connection', function (socket) {
   });
 
   socket.on("summon", (message, ack) => {
+    if (mailTimeout) {
+      ack && ack("Couldn't summon the master of this realm : too many tries, retry later.");
+      return;
+    }
+
+    mailTimeout = true;
+    setTimeout(function () {
+      mailTimeout = false;
+    }, 30 * 60 * 1000);
+
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         host: 'auth.smtp.1and1.fr',
@@ -52,10 +63,11 @@ io.on('connection', function (socket) {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
+          ack && ack("Cannot summon the master of this plane.");
             return console.log(error);
         }
         console.log('Message sent: %s', info.messageId);
-        ack && ack(info);
+        ack && ack("The master of this domain has been summoned.");
     });
   });
 });
