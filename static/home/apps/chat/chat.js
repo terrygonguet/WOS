@@ -28,7 +28,7 @@
         localStorage.setItem("pseudo", pseudo);
         addLine("Info", `Your nickname is now "${pseudo}".`, "info");
       } else if (!pseudo) {
-        addLine("Error", "You must first set your display name with /nick <nickname>. No rules will be enforced.", "danger");
+        addLine("Error", "You must first set your display name with /nick <nickname>. No rules apply.", "danger");
       } else {
         addLine(pseudo + " (YOU)", text);
         WOS.io.emit("message", { pseudo, text });

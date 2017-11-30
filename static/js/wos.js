@@ -4,9 +4,10 @@ WOS.io = io(location.origin);
 
 $(document).ready(function () {
   $(document).keyup(function (e) {
-    if (e.key === "t" && e.altKey && e.ctrlKey) {
+    if (e.key === "t" && (e.altKey || e.metaKey) && e.ctrlKey) {
+      e.preventDefault();
       var app = new WOS.App("home/apps/cmd/");
-      $(".hint").fadeOut();
+      $(".hint").fadeOut("slow");
     }
   });
 });

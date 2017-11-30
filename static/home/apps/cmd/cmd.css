@@ -24,4 +24,13 @@
 
 .wrapper-cmd #cli {
   width: 99%;
+  border: none;
+  background: #111;
+  font-weight: bolder;
+  color: #EEE;
+  box-shadow: none;
+}
+
+.wrapper-cmd #cli {
+  box-shadow: none;
 }

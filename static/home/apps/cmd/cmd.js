@@ -5,8 +5,10 @@
   var history = "";
   var hoffset = 0;
 
-  handle.left = innerWidth / 2 - handle.width / 2;
-  handle.top = innerHeight / 2 - handle.height / 2;
+  if (!WOS.Window.list.find(w => w !== handle && w.title === handle.title)) {
+    handle.left = innerWidth / 2 - handle.width / 2;
+    handle.top = innerHeight / 2 - handle.height / 2;
+  }
 
   $.getJSON("list", function (res) {
     currentdir = Object.keys(res);
@@ -90,20 +92,19 @@
       });
     },
     open: e => {
-      try {
-        if (e[0]) {
-          new WOS.App(curpath() + "/" + e[0] + "/");
-        } else {
-          new WOS.App(curpath() + "/");
-        }
-      } catch (err) {
-        addLine(err, "danger");
+      if (e[0]) {
+        new WOS.App(curpath() + "/" + e[0] + "/", (err) => addLine(err, "danger"));
+      } else {
+        new WOS.App(curpath() + "/", (err) => addLine(err, "danger"));
       }
     },
     code: e => {
       $.get(curpath() + "/" + e[0], function (res) {
+        if (typeof res !== "string")
+          res = JSON.stringify(res, null, '  ');
+
         var win = new WOS.Window({
-          x: 50, y: 50, w: 500, h: 500,
+          x: WOS.App.nextX, y: WOS.App.nextY, w: 800, h: 600,
           title: curpath() + "/" + e[0]
         });
 
@@ -111,6 +112,7 @@
         e[0].includes(".css") && (filetype = "css");
         e[0].includes(".js") && (filetype = "javascript");
         e[0].includes(".html") && (filetype = "html");
+        e[0].includes(".json") && (filetype = "json");
 
         var content = $(`<pre class="code"></pre>`)
           .append($(`<code data-language="${filetype}"><code>`)
