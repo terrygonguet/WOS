@@ -10,12 +10,23 @@ server.listen(process.env.PORT || 80, function () {
 
 app.use(express.static("static"));
 
+const sockets = [];
 io.on('connection', function (socket) {
+  sockets.push(socket);
   console.log(socket.id + " joined");
   socket.join("chat");
+
   socket.on("message", data => {
     socket.to("chat").emit("message", data);
     console.log(socket.id, data);
+  });
+
+  socket.on("disconnect", () => {
+    sockets.splice(sockets.indexOf(socket), 1);
+  });
+
+  socket.on("count", (data, ack) => {
+    ack(sockets.length);
   });
 });
 

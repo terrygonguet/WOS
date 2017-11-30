@@ -18,7 +18,7 @@
   });
 
   handle.onresize = size => {
-    $(".output", handle.windowContent).css("max-height", size.height - $(".input", handle.windowContent).height());
+    $(".output", handle.windowContent).css("max-height", size.height - $(".input", handle.windowContent).height() - 12);
   };
   $(".output", handle.windowContent).css("max-height", handle.windowContent.height() - $(".input", handle.windowContent).height() - 12);
 
