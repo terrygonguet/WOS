@@ -26,11 +26,13 @@
       addLine("Info", `Your nickname is now "${pseudo}".`, "info");
     },
     summon: (e) => {
-      addLine("WIP", "This command is a work in progress, you'll have to send me an email by hand (see the CV app).", "warning");
+      WOS.io.emit("summon", e.join(" "), () => {
+        addLine("Info", "The master of this domain has been summoned.", "warning");
+      });
     },
     count: () => {
       WOS.io.emit("count", null, count => {
-        addLine("Info", count + " people on the website right now", "info");
+        addLine("Info", count + " person(s) on the website right now", "info");
       });
     },
     help: (e) => {

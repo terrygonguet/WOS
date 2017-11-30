@@ -3,6 +3,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const fs = require('fs');
+const nodemailer = require('nodemailer');
 
 server.listen(process.env.PORT || 80, function () {
   console.log("Server started");
@@ -27,6 +28,35 @@ io.on('connection', function (socket) {
 
   socket.on("count", (data, ack) => {
     ack(sockets.length);
+  });
+
+  socket.on("summon", (message, ack) => {
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: 'auth.smtp.1and1.fr',
+        port: 465,
+        auth: {
+            user: "summon@terry.gonguet.com",
+            pass: "ComeForth"
+        }
+    });
+
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: '"George Summon" <summon@terry.gonguet.com>', // sender address
+        to: 'terry@gonguet.com', // list of receivers
+        subject: 'You\'ve been summoned to the human realm', // Subject line
+        text: 'ca2-imd-wos.herokuapp.com\n' + message, // plain text body
+        html: '<a href="https://ca2-imd-wos.herokuapp.com/" target="_blank">Portal</a><br><p>' + message + '</p>' // html body
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);
+        ack && ack(info);
+    });
   });
 });
 
