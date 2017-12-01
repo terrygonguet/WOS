@@ -37,18 +37,13 @@ io.on('connection', function (socket) {
       return;
     }
 
-    mailTimeout = true;
-    setTimeout(function () {
-      mailTimeout = false;
-    }, 30 * 60 * 1000);
-
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         host: 'auth.smtp.1and1.fr',
         port: 465,
         auth: {
             user: "summon@terry.gonguet.com",
-            pass: "ComeForth"
+            pass: "FuckMySQL"
         }
     });
 
@@ -66,6 +61,10 @@ io.on('connection', function (socket) {
           ack && ack("Cannot summon the master of this plane.");
             return console.log(error);
         }
+        mailTimeout = true;
+        setTimeout(function () {
+          mailTimeout = false;
+        }, 30 * 60 * 1000);
         console.log('Message sent: %s', info.messageId);
         ack && ack("The master of this domain has been summoned.");
     });
