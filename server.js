@@ -42,13 +42,18 @@ io.on('connection', function (socket) {
       mailTimeout = false;
     }, 30 * 60 * 1000);
 
+    var email = JSON.parse(fs.readFileSync("email.json"));
+    email = email || {
+      user: process.env.EMAIL_USER,
+      password: process.env.EMAIL_PASSWD
+    };
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         host: 'auth.smtp.1and1.fr',
         port: 465,
         auth: {
-            user: "summon@terry.gonguet.com",
-            pass: "ComeForth"
+            user: email.user,
+            pass: email.password
         }
     });
 
