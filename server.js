@@ -37,7 +37,6 @@ io.on('connection', function (socket) {
       return;
     }
 
-<<<<<<< HEAD
     mailTimeout = true;
     setTimeout(function () {
       mailTimeout = false;
@@ -48,20 +47,13 @@ io.on('connection', function (socket) {
       user: process.env.EMAIL_USER,
       password: process.env.EMAIL_PASSWD
     };
-=======
->>>>>>> 0ec707b1cc3cc87e817fa30acc3afb246666d551
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         host: 'auth.smtp.1and1.fr',
         port: 465,
         auth: {
-<<<<<<< HEAD
             user: email.user,
             pass: email.password
-=======
-            user: "summon@terry.gonguet.com",
-            pass: "FuckMySQL"
->>>>>>> 0ec707b1cc3cc87e817fa30acc3afb246666d551
         }
     });
 
