@@ -94,6 +94,11 @@
       "name": "Most of music",
       "title": null,
       "href": "http://everynoise.com/engenremap.html"
+    },
+    {
+      "name": "Well made tutorials",
+      "title": "Neat makes you learn faster, trust me",
+      "href": "https://aframe.io/aframe-school/#/"
     }
   ],
   "dislike": [
