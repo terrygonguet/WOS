@@ -3,8 +3,7 @@ body, html {
   width: 100%;
   padding: 0;
   margin: 0;
-  background: #111;
-  /*background: #111 url('hero.png') no-repeat fixed center;*/
+  background: #111 url('hero.png') no-repeat fixed center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -31,14 +30,8 @@ body, html {
   z-index: 0;
 }
 
-#hero canvas {
-  position: fixed;
-  top: 0;
-  pointer-events: none;
-}
-
 .wrapper-cv #details {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -47,7 +40,6 @@ body, html {
   justify-content: center;
   align-items: center;
   pointer-events: none;
-  z-index: 1;
 }
 
 .wrapper-cv #name {
@@ -84,12 +76,12 @@ body, html {
 }
 
 .wrapper-cv #hidetext {
-  position: fixed;
+  position: absolute;
   top: 5px;
   right: 25px;
   opacity: 0.1;
   color: #EEE;
-  z-index: 1;
+  z-index: 0;
 }
 
 .wrapper-cv #categories {
