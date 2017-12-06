@@ -4,8 +4,9 @@ $(document).ready(function () {
     $("#blinky").html(newtxt);
   }, 750);
 
-  var birth = new Date(1996, 04, 11);
-  $("#age").text(parseInt((Date.now() - birth) / 31557600000));
+  $("#hero canvas")
+    .attr("width", $("#hero").width())
+    .css("width", $("#hero").width());
 
   $("#hidetext").click(function () {
     $("#details").fadeToggle();
