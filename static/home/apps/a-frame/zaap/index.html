@@ -1,0 +1,31 @@
+<html>
+<head>
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sylvester/0.1.3/sylvester.min.js"></script>
+  <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <a-scene>
+    <a-sphere position="0 1.5 -3.5" scale="0.18 0.18 0.18" color="#000"></a-sphere>
+    <a-entity position="0 1.5 -3.5" zapper="0.3" animation="property:rotation;
+                                                            from:0 0 0;
+                                                            to:360 360 360;
+                                                            easing:linear;
+                                                            dur:10000;
+                                                            loop:true;"></a-entity>
+    <a-entity position="0 1.5 -3.5" dotring="radius:2.08;number:250;" animation="property:rotation;
+                                                                                from:0 0 0;
+                                                                                to:0 0 360;
+                                                                                easing:linear;
+                                                                                dur:20000;
+                                                                                loop:true;"></a-entity>
+    <a-entity camera="userHeight: 1.5"></a-entity>
+    <a-sky color="#111"></a-sky>
+    <a-light type="ambient"></a-light>
+    <a-plane color="#111" position="0 1.5 -7" scale="50 50 50"></a-plane>
+  </a-scene>
+  <script src="../base.js"></script>
+</body>
+</html>

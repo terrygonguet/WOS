@@ -1,0 +1,50 @@
+<html>
+<head>
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sylvester/0.1.3/sylvester.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <a-scene>
+    <a-entity position="0 1.5 -1.2">
+      <a-entity homo-cloud="number:4000"></a-entity>
+      <a-animation attribute="rotation"
+                   from="0 0 0"
+                   to="360 360 360"
+                   repeat="indefinite"
+                   easing="linear"
+                   dur="100000"></a-animation>
+      <a-animation attribute="scale"
+                   from="2 2 2"
+                   to="0.3 0.3 0.3"
+                   repeat="indefinite"
+                   direction="alternate"
+                   easing="ease-in-out-elastic"
+                   dur="100000"></a-animation>
+    </a-entity>
+
+    <a-entity position="0 1.5 -1.2">
+      <a-entity homo-cloud="number:4000"></a-entity>
+      <a-animation attribute="rotation"
+                   from="360 360 360"
+                   to="0 0 0"
+                   repeat="indefinite"
+                   easing="linear"
+                   dur="100000"></a-animation>
+      <a-animation attribute="scale"
+                   from="0.3 0.3 0.3"
+                   to="2 2 2"
+                   repeat="indefinite"
+                   direction="alternate"
+                   easing="ease-in-out-elastic"
+                   dur="100000"></a-animation>
+    </a-entity>
+
+    <a-entity camera="userHeight: 1.5"></a-entity>
+    <a-light type="ambient"></a-light>
+    <a-sky color="#111"></a-sky>
+  </a-scene>
+  <script src="../base.js"></script>
+</body>
+</html>
