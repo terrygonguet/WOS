@@ -6,13 +6,13 @@ const fs = require('fs');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 
-io.origins('*:*');
-
 server.listen(process.env.PORT || 80, function () {
   console.log("Server started");
 });
 
 app.use(express.static("static"));
+app.use(cors());
+io.origins('*:*');
 
 const sockets = [];
 var mailTimeout = false;
