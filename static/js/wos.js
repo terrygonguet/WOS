@@ -1,6 +1,6 @@
 var WOS = WOS || {};
 
-WOS.io = io(location.origin);
+WOS.io = io("http://ca2-imd-wos.herokuapp.com/");
 
 $(document).ready(function () {
   $(document).keydown(function (e) {
