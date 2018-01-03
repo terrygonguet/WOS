@@ -4,12 +4,14 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const fs = require('fs');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
 
 server.listen(process.env.PORT || 80, function () {
   console.log("Server started");
 });
 
 app.use(express.static("static"));
+app.use(cors());
 
 const sockets = [];
 var mailTimeout = false;
