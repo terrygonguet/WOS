@@ -10,7 +10,7 @@
     handle.top = innerHeight / 2 - handle.height / 2;
   }
 
-  $.getJSON("list", function (res) {
+  $.getJSON(WOS.api + "list", function (res) {
     currentdir = Object.keys(res);
     $("#path", handle.windowContent).text(curpath());
     addLine("Type 'help' for commands", "info");
@@ -68,7 +68,7 @@
 
   const commands = {
     ls: e => {
-      $.getJSON("list/" + encodeURIComponent(curpath()), function (res) {
+      $.getJSON(WOS.api + "list/" + encodeURIComponent(curpath()), function (res) {
         addLine(".", "success");
         addLine("..", "success");
         for (var f in res) {
@@ -84,7 +84,7 @@
       } else {
         path = encodeURIComponent(curpath() + "/" + e[0]);
       }
-      $.getJSON("list/" + path, function (res) {
+      $.getJSON(WOS.api + "list/" + path, function (res) {
         if (e[0] !== "." && e[0] !== "..")
           addtopath(e[0]);
       }).fail(function () {
@@ -99,7 +99,7 @@
       }
     },
     code: e => {
-      $.get(curpath() + "/" + e[0], function (res) {
+      $.get(WOS.api + curpath() + "/" + e[0], function (res) {
         if (typeof res !== "string")
           res = JSON.stringify(res, null, '  ');
 
