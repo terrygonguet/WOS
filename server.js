@@ -12,7 +12,7 @@ server.listen(process.env.PORT || 80, function () {
 
 app.use(express.static("static"));
 app.use(cors());
-io.set('origins', '*');
+io.set('origins', '*:*');
 
 const sockets = [];
 var mailTimeout = false;
